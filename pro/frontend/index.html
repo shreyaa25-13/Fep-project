@@ -1,0 +1,2220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillConnect India - Professional Labor Job Portal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f1f5f9;
+            --white: #ffffff;
+            --orange: #ff6600;
+            --green: #138808;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--dark);
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--warning) 50%, var(--green) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--warning) 50%, var(--green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--green) 100%);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 16px;
+            background: var(--light);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .user-info:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--green) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--warning) 50%, var(--green) 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 102, 0, 0.4);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--warning) 50%, var(--green) 100%);
+            color: white;
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -250px;
+            right: -250px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -150px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 30px); }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .hero-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            transform: rotate(3deg);
+            transition: all 0.3s ease;
+        }
+
+        .hero-card:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .hero-card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-card h3 {
+            color: var(--dark);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-card p {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        .india-flag {
+            display: inline-block;
+            font-size: 2rem;
+            margin-left: 1rem;
+            animation: wave 2s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(20deg); }
+            75% { transform: rotate(-20deg); }
+        }
+
+        .stats {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 16px;
+            background: var(--light);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+
+        .stat-card:nth-child(1) .stat-icon {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--warning) 100%);
+        }
+
+        .stat-card:nth-child(2) .stat-icon {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .stat-card:nth-child(3) .stat-icon {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .stat-card:nth-child(4) .stat-icon {
+            background: linear-gradient(135deg, var(--green) 0%, #38f9d7 100%);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .search-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, #f8fafc 0%, #e0e7ff 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--gray);
+        }
+
+        .search-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr auto;
+            gap: 1rem;
+        }
+
+        .search-input {
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        .search-btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--green) 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 102, 0, 0.4);
+        }
+
+        .categories {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .categories-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .category-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+            border-radius: 16px;
+            padding: 2rem 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .category-card:hover::before {
+            left: 100%;
+        }
+
+        .category-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-icon {
+            font-size: 40px;
+            margin-bottom: 1rem;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover .category-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .category-name {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .category-count {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-top: 0.5rem;
+        }
+
+        .jobs-section {
+            padding: 4rem 2rem;
+            background: var(--light);
+        }
+
+        .jobs-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .filter-bar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .job-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .job-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--green) 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .job-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        .job-company {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--green) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+
+        .job-badge {
+            padding: 6px 12px;
+            background: #dbeafe;
+            color: #1e40af;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .job-badge.urgent {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .job-badge.featured {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .job-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .job-company-name {
+            color: var(--gray);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .job-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .job-detail {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .job-description {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .job-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-tag {
+            padding: 4px 12px;
+            background: #f1f5f9;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .job-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .job-salary {
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .job-apply-btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--green) 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .job-apply-btn:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(255, 102, 0, 0.4);
+        }
+
+        .workers-section {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .workers-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .workers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .worker-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .worker-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary);
+        }
+
+        .worker-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--green) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            font-weight: 700;
+            border: 4px solid white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .worker-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #dbeafe;
+            color: #1e40af;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .worker-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .worker-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .worker-skills {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .worker-stats {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .worker-stat {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .worker-rate {
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .worker-contact-btn {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--green) 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+        }
+
+        .worker-contact-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 102, 0, 0.4);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 24px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .close-modal {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: var(--error);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .detail-section {
+            margin-bottom: 2rem;
+        }
+
+        .detail-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 0.5rem;
+        }
+
+        .detail-row {
+            display: flex;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background: var(--light);
+            border-radius: 8px;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: var(--gray);
+            min-width: 150px;
+        }
+
+        .detail-value {
+            color: var(--dark);
+            flex: 1;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--green) 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            color: white;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .contact-value {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .form-actions button {
+            flex: 1;
+        }
+
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #e2e8f0;
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1001;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            border-left: 4px solid var(--success);
+        }
+
+        .toast.error {
+            border-left: 4px solid var(--error);
+        }
+
+        .toast-icon {
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 1200px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .jobs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .workers-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .search-box {
+                grid-template-columns: 1fr;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .jobs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .workers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .workers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="toast" id="toast">
+        <span class="toast-icon">✔</span>
+        <span id="toastMessage">Success!</span>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">🔨</div>
+                <span class="logo-text">SkillConnect India</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#jobs">Find Jobs</a></li>
+                <li><a href="#workers">Find Workers</a></li>
+            </ul>
+            <div class="user-section" id="userSection">
+                <button class="btn btn-outline" onclick="showLoginModal()">Login</button>
+                <button class="btn btn-primary" onclick="showRegisterModal()">Get Started</button>
+            </div>
+            <div class="user-section" id="loggedInSection" style="display: none;">
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <span id="userName">User</span>
+                </div>
+                <button class="btn btn-primary" id="actionBtn" onclick="showActionModal()">Post Job</button>
+                <button class="btn btn-outline" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Find Skilled Workers or Your Dream Job in India <span class="india-flag">🇮🇳</span></h1>
+                <p>Connect with thousands of verified professionals and employers across India. Your next opportunity is just a click away.</p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="document.getElementById('jobs').scrollIntoView({behavior: 'smooth'})">
+                        Browse Jobs
+                    </button>
+                    <button class="btn btn-outline" style="background: white; color: var(--primary);" onclick="document.getElementById('workers').scrollIntoView({behavior: 'smooth'})">
+                        Find Workers
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-card">
+                    <div class="hero-card-icon">👷</div>
+                    <h3 id="heroJobCount">Loading...</h3>
+                    <p>Active opportunities waiting for skilled professionals across India</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-icon">💼</div>
+                <div class="stat-number" id="statJobs">0</div>
+                <div class="stat-label">Active Jobs</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-number" id="statWorkers">0</div>
+                <div class="stat-label">Skilled Workers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🏢</div>
+                <div class="stat-number" id="statEmployers">0</div>
+                <div class="stat-label">Companies</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✔</div>
+                <div class="stat-number" id="statApplications">0</div>
+                <div class="stat-label">Applications</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="search-section">
+        <div class="search-container">
+            <div class="section-header">
+                <h2>Find Your Perfect Match</h2>
+                <p>Search through thousands of opportunities across India</p>
+            </div>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Job title or skill..." id="searchKeyword">
+                <input type="text" class="search-input" placeholder="Location (e.g., Mumbai, Delhi)..." id="searchLocation">
+                <select class="search-input" id="searchCategory">
+                    <option value="">All Categories</option>
+                    <option value="construction">Construction</option>
+                    <option value="electrical">Electrical</option>
+                    <option value="plumbing">Plumbing</option>
+                    <option value="carpentry">Carpentry</option>
+                    <option value="painting">Painting</option>
+                    <option value="welding">Welding</option>
+                    <option value="hvac">HVAC</option>
+                    <option value="roofing">Roofing</option>
+                    <option value="landscaping">Landscaping</option>
+                    <option value="masonry">Masonry</option>
+                </select>
+                <button class="search-btn" onclick="performSearch()">🔍 Search</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories">
+        <div class="categories-container">
+            <div class="section-header">
+                <h2>Popular Categories</h2>
+                <p>Explore opportunities by skill category</p>
+            </div>
+            <div class="category-grid">
+                <div class="category-card" onclick="filterByCategory('construction')">
+                    <span class="category-icon">🏗️</span>
+                    <div class="category-name">Construction</div>
+                    <div class="category-count">Click to view</div>
+                </div>
+                <div class="category-card" onclick="filterByCategory('electrical')">
+                    <span class="category-icon">⚡</span>
+                    <div class="category-name">Electrical</div>
+                    <div class="category-count">Click to view</div>
+                </div>
+                <div class="category-card" onclick="filterByCategory('plumbing')">
+                    <span class="category-icon">🔧</span>
+                    <div class="category-name">Plumbing</div>
+                    <div class="category-count">Click to view</div>
+                </div>
+                <div class="category-card" onclick="filterByCategory('carpentry')">
+                    <span class="category-icon">🪚</span>
+                    <div class="category-name">Carpentry</div>
+                    <div class="category-count">Click to view</div>
+                </div>
+                <div class="category-card" onclick="filterByCategory('painting')">
+                    <span class="category-icon">🎨</span>
+                    <div class="category-name">Painting</div>
+                    <div class="category-count">Click to view</div>
+                </div>
+                <div class="category-card" onclick="filterByCategory('welding')">
+                    <span class="category-icon">🔥</span>
+                    <div class="category-name">Welding</div>
+                    <div class="category-count">Click to view</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="jobs-section" id="jobs">
+        <div class="jobs-container">
+            <div class="section-header">
+                <h2>Featured Jobs Across India</h2>
+                <p>Discover the best opportunities for your skills</p>
+            </div>
+            <div class="filter-bar">
+                <button class="filter-btn active" onclick="filterJobs('all', this)">All Jobs</button>
+                <button class="filter-btn" onclick="filterJobs('full-time', this)">Full Time</button>
+                <button class="filter-btn" onclick="filterJobs('part-time', this)">Part Time</button>
+                <button class="filter-btn" onclick="filterJobs('contract', this)">Contract</button>
+            </div>
+            <div class="jobs-grid" id="jobsGrid">
+                <p style="text-align: center; color: var(--gray); grid-column: 1/-1;">Loading jobs...</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="workers-section" id="workers">
+        <div class="workers-container">
+            <div class="section-header">
+                <h2>Top Skilled Workers in India</h2>
+                <p>Connect with verified professionals across the country</p>
+            </div>
+            <div class="workers-grid" id="workersGrid">
+                <p style="text-align: center; color: var(--gray); grid-column: 1/-1;">Loading workers...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Welcome Back</h2>
+                <button class="close-modal" onclick="closeModal('loginModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" required placeholder="your@email.com" id="loginEmail">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" required placeholder="Enter your password" id="loginPassword">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" style="width: 100%">Login</button>
+                    </div>
+                    <p style="text-align: center; margin-top: 1rem; color: var(--gray)">
+                        Don't have an account? <a href="#" onclick="closeModal('loginModal'); showRegisterModal();" style="color: var(--primary); font-weight: 600;">Sign up</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create Account</h2>
+                <button class="close-modal" onclick="closeModal('registerModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" required placeholder="Rajesh Kumar" id="regName">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" required placeholder="your@email.com" id="regEmail">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="+91-9876543210" id="regPhone">
+                    </div>
+                    <div class="form-group">
+                        <label>I am a</label>
+                        <select required id="userType">
+                            <option value="">Select type</option>
+                            <option value="worker">Worker (Looking for jobs)</option>
+                            <option value="employer">Employer (Hiring workers)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" required placeholder="Create a password" id="regPassword">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" style="width: 100%">Create Account</button>
+                    </div>
+                    <p style="text-align: center; margin-top: 1rem; color: var(--gray)">
+                        Already have an account? <a href="#" onclick="closeModal('registerModal'); showLoginModal();" style="color: var(--primary); font-weight: 600;">Login</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post Job Modal -->
+    <div class="modal" id="postJobModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Post a Job</h2>
+                <button class="close-modal" onclick="closeModal('postJobModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="handlePostJob(event)">
+                    <div class="form-group">
+                        <label>Job Title</label>
+                        <input type="text" required placeholder="e.g., Senior Electrician" id="jobTitle">
+                    </div>
+                    <div class="form-group">
+                        <label>Company Name</label>
+                        <input type="text" required placeholder="Your Company" id="jobCompany">
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select required id="jobCategory">
+                            <option value="">Select category</option>
+                            <option value="construction">Construction</option>
+                            <option value="electrical">Electrical</option>
+                            <option value="plumbing">Plumbing</option>
+                            <option value="carpentry">Carpentry</option>
+                            <option value="painting">Painting</option>
+                            <option value="welding">Welding</option>
+                            <option value="hvac">HVAC</option>
+                            <option value="roofing">Roofing</option>
+                            <option value="landscaping">Landscaping</option>
+                            <option value="masonry">Masonry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" required placeholder="City, State (e.g., Mumbai, Maharashtra)" id="jobLocation">
+                    </div>
+                    <div class="form-group">
+                        <label>Job Type</label>
+                        <select required id="jobType">
+                            <option value="full-time">Full Time</option>
+                            <option value="part-time">Part Time</option>
+                            <option value="contract">Contract</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Salary Range (₹/month)</label>
+                        <input type="text" required placeholder="e.g., ₹35,000 - ₹55,000" id="jobSalary">
+                    </div>
+                    <div class="form-group">
+                        <label>Skills Required (comma separated)</label>
+                        <input type="text" required placeholder="e.g., Electrical, Wiring, Safety" id="jobSkills">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea required placeholder="Describe the job responsibilities and requirements..." id="jobDescription"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="closeModal('postJobModal')">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Post Job</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Profile Modal -->
+    <div class="modal" id="createProfileModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create Worker Profile</h2>
+                <button class="close-modal" onclick="closeModal('createProfileModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="handleCreateProfile(event)">
+                    <div class="form-group">
+                        <label>Professional Title</label>
+                        <input type="text" required placeholder="e.g., Certified Electrician" id="profileTitle">
+                    </div>
+                    <div class="form-group">
+                        <label>Skills (comma separated)</label>
+                        <input type="text" required placeholder="e.g., Electrical, Wiring, Troubleshooting" id="profileSkills">
+                    </div>
+                    <div class="form-group">
+                        <label>Experience (years)</label>
+                        <input type="number" required placeholder="5" id="profileExperience">
+                    </div>
+                    <div class="form-group">
+                        <label>Hourly Rate (₹)</label>
+                        <input type="number" required placeholder="500" id="profileRate">
+                    </div>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" required placeholder="City, State" id="profileLocation">
+                    </div>
+                    <div class="form-group">
+                        <label>Bio</label>
+                        <textarea required placeholder="Tell employers about yourself and your experience..." id="profileBio"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="closeModal('createProfileModal')">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Create Profile</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Details Modal -->
+    <div class="modal" id="detailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="detailsTitle">Details</h2>
+                <button class="close-modal" onclick="closeModal('detailsModal')">×</button>
+            </div>
+            <div class="modal-body" id="detailsContent">
+                <!-- Content will be dynamically loaded -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // API Configuration
+        const API_BASE_URL = 'http://localhost:5000/api';
+        
+        let currentUser = null;
+        let authToken = null;
+
+        // In-memory storage
+        const memoryStorage = {
+            authToken: null,
+            currentUser: null
+        };
+
+        // API Helper Function
+        async function apiCall(endpoint, method = 'GET', data = null) {
+            const options = {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            };
+            
+            if (authToken) {
+                options.headers['Authorization'] = `Bearer ${authToken}`;
+            }
+            
+            if (data) {
+                options.body = JSON.stringify(data);
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}${endpoint}`, options);
+                const result = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(result.error || 'An error occurred');
+                }
+                
+                return result;
+            } catch (error) {
+                console.error('API Call Error:', error);
+                throw error;
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Check memory storage for auth
+            if (memoryStorage.authToken && memoryStorage.currentUser) {
+                authToken = memoryStorage.authToken;
+                currentUser = memoryStorage.currentUser;
+                updateUIForLoggedInUser();
+            }
+            
+            // Load initial data
+            await loadStats();
+            await loadJobs();
+            await loadWorkers();
+            
+            // Modal click outside to close
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Load Statistics
+        async function loadStats() {
+            try {
+                const data = await apiCall('/stats');
+                document.getElementById('statJobs').textContent = data.stats.active_jobs || 0;
+                document.getElementById('statWorkers').textContent = data.stats.total_workers || 0;
+                document.getElementById('statEmployers').textContent = data.stats.total_employers || 0;
+                document.getElementById('statApplications').textContent = data.stats.total_applications || 0;
+                document.getElementById('heroJobCount').textContent = `${data.stats.active_jobs || 0}+ Jobs`;
+            } catch (error) {
+                console.error('Error loading stats:', error);
+                showToast('Could not load statistics. Make sure backend is running!', 'error');
+            }
+        }
+
+        // Load Jobs
+        async function loadJobs(filters = {}) {
+            try {
+                let endpoint = '/jobs?';
+                if (filters.type) endpoint += `type=${filters.type}&`;
+                if (filters.category) endpoint += `category=${filters.category}&`;
+                if (filters.keyword) endpoint += `keyword=${filters.keyword}&`;
+                if (filters.location) endpoint += `location=${filters.location}&`;
+                
+                const data = await apiCall(endpoint);
+                renderJobs(data.jobs);
+            } catch (error) {
+                console.error('Error loading jobs:', error);
+                document.getElementById('jobsGrid').innerHTML = '<p style="text-align: center; color: var(--error); grid-column: 1/-1;">Error loading jobs. Make sure backend is running!</p>';
+            }
+        }
+
+        // Render Jobs
+        function renderJobs(jobs) {
+            const grid = document.getElementById('jobsGrid');
+            
+            if (!jobs || jobs.length === 0) {
+                grid.innerHTML = '<p style="text-align: center; color: var(--gray); grid-column: 1/-1;">No jobs found</p>';
+                return;
+            }
+            
+            grid.innerHTML = jobs.map(job => {
+                const skills = typeof job.skills === 'string' ? job.skills.split(',') : (Array.isArray(job.skills) ? job.skills : []);
+                const badgeClass = job.urgent ? 'urgent' : (job.featured ? 'featured' : '');
+                const badgeText = job.urgent ? 'Urgent' : (job.featured ? 'Featured' : 'New');
+                
+                return `
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div class="job-company">${job.icon || '💼'}</div>
+                            <span class="job-badge ${badgeClass}">${badgeText}</span>
+                        </div>
+                        <h3 class="job-title">${job.title}</h3>
+                        <p class="job-company-name">${job.company}</p>
+                        <div class="job-details">
+                            <span class="job-detail">📍 ${job.location}</span>
+                            <span class="job-detail">💼 ${job.type.replace('-', ' ')}</span>
+                            ${job.remote_ok ? '<span class="job-detail">🌐 Remote OK</span>' : ''}
+                        </div>
+                        <p class="job-description">${job.description.substring(0, 150)}...</p>
+                        <div class="job-skills">
+                            ${skills.slice(0, 3).map(s => `<span class="skill-tag">${s.trim()}</span>`).join('')}
+                        </div>
+                        <div class="job-footer">
+                            <span class="job-salary">${job.salary}</span>
+                            <button class="job-apply-btn" onclick="viewJobDetails(${job.id})">View Details →</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Load Workers
+        async function loadWorkers(filters = {}) {
+            try {
+                let endpoint = '/workers?';
+                if (filters.category) endpoint += `category=${filters.category}&`;
+                if (filters.location) endpoint += `location=${filters.location}&`;
+                
+                const data = await apiCall(endpoint);
+                renderWorkers(data.workers);
+            } catch (error) {
+                console.error('Error loading workers:', error);
+                document.getElementById('workersGrid').innerHTML = '<p style="text-align: center; color: var(--error); grid-column: 1/-1;">Error loading workers. Make sure backend is running!</p>';
+            }
+        }
+
+        // Render Workers
+        function renderWorkers(workers) {
+            const grid = document.getElementById('workersGrid');
+            
+            if (!workers || workers.length === 0) {
+                grid.innerHTML = '<p style="text-align: center; color: var(--gray); grid-column: 1/-1;">No workers found</p>';
+                return;
+            }
+            
+            grid.innerHTML = workers.map(worker => `
+                <div class="worker-card">
+                    <div class="worker-avatar">${worker.avatar}</div>
+                    ${worker.verified ? '<span class="worker-badge">✓ Verified</span>' : ''}
+                    ${worker.top_rated ? '<span class="worker-badge" style="background: #fef3c7; color: #d97706;">⭐ Top Rated</span>' : ''}
+                    <h3 class="worker-name">${worker.name}</h3>
+                    <p class="worker-title">${worker.title}</p>
+                    <p class="worker-skills">${worker.skills.split(',').slice(0, 3).join(', ')}</p>
+                    <div class="worker-stats">
+                        <span class="worker-stat">⭐ ${worker.rating || 0}</span>
+                        <span class="worker-stat">💼 ${worker.jobs_completed || 0} jobs</span>
+                    </div>
+                    <p class="worker-rate">${worker.hourly_rate}/hr</p>
+                    <button class="worker-contact-btn" onclick="viewWorkerDetails(${worker.user_id})">View Details</button>
+                </div>
+            `).join('');
+        }
+
+        // View Job Details (No Login Required)
+        async function viewJobDetails(jobId) {
+            showLoading();
+            try {
+                const data = await apiCall(`/jobs/${jobId}`);
+                const job = data.job;
+                
+                document.getElementById('detailsTitle').textContent = job.title;
+                document.getElementById('detailsContent').innerHTML = `
+                    <div class="detail-section">
+                        <h3>Job Information</h3>
+                        <div class="detail-row">
+                            <span class="detail-label">Location:</span>
+                            <span class="detail-value">${job.location}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Job Type:</span>
+                            <span class="detail-value">${job.job_type}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Salary:</span>
+                            <span class="detail-value">${job.salary}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Experience Required:</span>
+                            <span class="detail-value">${job.experience_required || 'Not specified'} years</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h3>Description</h3>
+                        <p style="color: var(--gray); line-height: 1.8;">${job.description}</p>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h3>Required Skills</h3>
+                        <div class="job-skills">
+                            ${job.skills.split(',').map(s => `<span class="skill-tag">${s.trim()}</span>`).join('')}
+                        </div>
+                    </div>
+                    
+                    ${job.requirements ? `
+                    <div class="detail-section">
+                        <h3>Requirements</h3>
+                        <p style="color: var(--gray); line-height: 1.8;">${job.requirements}</p>
+                    </div>
+                    ` : ''}
+                    
+                    ${job.benefits ? `
+                    <div class="detail-section">
+                        <h3>Benefits</h3>
+                        <p style="color: var(--gray); line-height: 1.8;">${job.benefits}</p>
+                    </div>
+                    ` : ''}
+                    
+                    <div class="contact-info">
+                        <h3 style="margin-bottom: 1rem;">Contact Employer</h3>
+                        <div class="contact-item">
+                            <div class="contact-icon">👤</div>
+                            <div class="contact-details">
+                                <div class="contact-label">Name</div>
+                                <div class="contact-value">${job.employer_name}</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div class="contact-details">
+                                <div class="contact-label">Phone</div>
+                                <div class="contact-value">${job.employer_phone || 'Not provided'}</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">✉️</div>
+                            <div class="contact-details">
+                                <div class="contact-label">Email</div>
+                                <div class="contact-value">${job.employer_email}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                document.getElementById('detailsModal').classList.add('active');
+            } catch (error) {
+                showToast('Error loading job details', 'error');
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // View Worker Details (No Login Required)
+        async function viewWorkerDetails(workerId) {
+            showLoading();
+            try {
+                const data = await apiCall(`/workers?user_id=${workerId}`);
+                const workers = data.workers;
+                
+                if (!workers || workers.length === 0) {
+                    showToast('Worker not found', 'error');
+                    hideLoading();
+                    return;
+                }
+                
+                const worker = workers[0];
+                
+                document.getElementById('detailsTitle').textContent = worker.name;
+                document.getElementById('detailsContent').innerHTML = `
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <div class="worker-avatar" style="width: 120px; height: 120px; font-size: 50px;">${worker.avatar}</div>
+                        ${worker.verified ? '<span class="worker-badge" style="margin: 1rem 0.5rem 0 0;">✓ Verified</span>' : ''}
+                        ${worker.top_rated ? '<span class="worker-badge" style="background: #fef3c7; color: #d97706; margin-top: 1rem;">⭐ Top Rated</span>' : ''}
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h3>Professional Information</h3>
+                        <div class="detail-row">
+                            <span class="detail-label">Title:</span>
+                            <span class="detail-value">${worker.title}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Experience:</span>
+                            <span class="detail-value">${worker.experience_years} years (${worker.experience_level})</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Hourly Rate:</span>
+                            <span class="detail-value">${worker.hourly_rate}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Location:</span>
+                            <span class="detail-value">${worker.location}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Availability:</span>
+                            <span class="detail-value">${worker.availability}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Work Preference:</span>
+                            <span class="detail-value">${worker.work_preference}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h3>Statistics</h3>
+                        <div class="detail-row">
+                            <span class="detail-label">Rating:</span>
+                            <span class="detail-value">⭐ ${worker.rating} / 5.0</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Jobs Completed:</span>
+                            <span class="detail-value">${worker.jobs_completed}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Total Earnings:</span>
+                            <span class="detail-value">₹${worker.total_earnings.toLocaleString()}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Response Rate:</span>
+                            <span class="detail-value">${worker.response_rate}%</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">On-Time Delivery:</span>
+                            <span class="detail-value">${worker.on_time_delivery}%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h3>About</h3>
+                        <p style="color: var(--gray); line-height: 1.8;">${worker.bio || 'No bio provided'}</p>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h3>Skills</h3>
+                        <div class="job-skills">
+                            ${worker.skills.split(',').map(s => `<span class="skill-tag">${s.trim()}</span>`).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <h3 style="margin-bottom: 1rem;">Contact Information</h3>
+                        <div class="contact-item">
+                            <div class="contact-icon">👤</div>
+                            <div class="contact-details">
+                                <div class="contact-label">Name</div>
+                                <div class="contact-value">${worker.name}</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div class="contact-details">
+                                <div class="contact-label">Phone</div>
+                                <div class="contact-value">${worker.phone || 'Not provided'}</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">✉️</div>
+                            <div class="contact-details">
+                                <div class="contact-label">Email</div>
+                                <div class="contact-value">${worker.email}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                document.getElementById('detailsModal').classList.add('active');
+            } catch (error) {
+                showToast('Error loading worker details', 'error');
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Authentication Functions
+        async function handleLogin(e) {
+            e.preventDefault();
+            showLoading();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            try {
+                const data = await apiCall('/auth/login', 'POST', { email, password });
+                
+                authToken = data.access_token;
+                currentUser = data.user;
+                
+                memoryStorage.authToken = authToken;
+                memoryStorage.currentUser = currentUser;
+                
+                updateUIForLoggedInUser();
+                closeModal('loginModal');
+                showToast('Login successful! Welcome back.', 'success');
+                
+            } catch (error) {
+                showToast(error.message || 'Login failed', 'error');
+            } finally {
+                hideLoading();
+            }
+        }
+
+        async function handleRegister(e) {
+            e.preventDefault();
+            showLoading();
+            
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const phone = document.getElementById('regPhone').value;
+            const user_type = document.getElementById('userType').value;
+            const password = document.getElementById('regPassword').value;
+            
+            try {
+                const data = await apiCall('/auth/register', 'POST', { 
+                    name, 
+                    email,
+                    phone,
+                    user_type, 
+                    password 
+                });
+                
+                authToken = data.access_token;
+                currentUser = data.user;
+                
+                memoryStorage.authToken = authToken;
+                memoryStorage.currentUser = currentUser;
+                
+                updateUIForLoggedInUser();
+                closeModal('registerModal');
+                showToast('Account created successfully!', 'success');
+                
+            } catch (error) {
+                showToast(error.message || 'Registration failed', 'error');
+            } finally {
+                hideLoading();
+            }
+        }
+
+        function updateUIForLoggedInUser() {
+            document.getElementById('userSection').style.display = 'none';
+            document.getElementById('loggedInSection').style.display = 'flex';
+            document.getElementById('userName').textContent = currentUser.name;
+            
+            const avatar = currentUser.name.split(' ').map(n => n[0]).join('').toUpperCase();
+            document.getElementById('userAvatar').textContent = avatar;
+            
+            const actionBtn = document.getElementById('actionBtn');
+            if (currentUser.user_type === 'employer') {
+                actionBtn.textContent = 'Post Job';
+            } else {
+                actionBtn.textContent = 'Create Profile';
+            }
+        }
+
+        function logout() {
+            authToken = null;
+            currentUser = null;
+            memoryStorage.authToken = null;
+            memoryStorage.currentUser = null;
+            
+            document.getElementById('userSection').style.display = 'flex';
+            document.getElementById('loggedInSection').style.display = 'none';
+            
+            showToast('Logged out successfully', 'success');
+        }
+
+        // Job Functions
+        async function handlePostJob(e) {
+            e.preventDefault();
+            
+            if (!currentUser || currentUser.user_type !== 'employer') {
+                showToast('Only employers can post jobs', 'error');
+                return;
+            }
+            
+            showLoading();
+            
+            const jobData = {
+                title: document.getElementById('jobTitle').value,
+                company: document.getElementById('jobCompany').value,
+                category: document.getElementById('jobCategory').value,
+                location: document.getElementById('jobLocation').value,
+                job_type: document.getElementById('jobType').value,
+                salary_range: document.getElementById('jobSalary').value,
+                skills_required: document.getElementById('jobSkills').value,
+                description: document.getElementById('jobDescription').value
+            };
+            
+            try {
+                await apiCall('/jobs', 'POST', jobData);
+                closeModal('postJobModal');
+                showToast('Job posted successfully!', 'success');
+                await loadJobs();
+                await loadStats();
+                e.target.reset();
+            } catch (error) {
+                showToast(error.message || 'Failed to post job', 'error');
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Worker Profile Functions
+        async function handleCreateProfile(e) {
+            e.preventDefault();
+            
+            if (!currentUser || currentUser.user_type !== 'worker') {
+                showToast('Only workers can create profiles', 'error');
+                return;
+            }
+            
+            showLoading();
+            
+            const profileData = {
+                title: document.getElementById('profileTitle').value,
+                skills: document.getElementById('profileSkills').value,
+                experience_years: parseInt(document.getElementById('profileExperience').value),
+                hourly_rate: parseFloat(document.getElementById('profileRate').value),
+                location: document.getElementById('profileLocation').value,
+                bio: document.getElementById('profileBio').value
+            };
+            
+            try {
+                await apiCall('/workers/profile', 'POST', profileData);
+                closeModal('createProfileModal');
+                showToast('Profile created successfully!', 'success');
+                await loadWorkers();
+                await loadStats();
+                e.target.reset();
+            } catch (error) {
+                showToast(error.message || 'Failed to create profile', 'error');
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Filter Functions
+        function filterJobs(type, button) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            button.classList.add('active');
+            
+            const filters = type === 'all' ? {} : { type: type };
+            loadJobs(filters);
+        }
+
+        function filterByCategory(category) {
+            showToast(`Filtering jobs by ${category}...`, 'success');
+            loadJobs({ category: category });
+            document.getElementById('jobs').scrollIntoView({behavior: 'smooth'});
+        }
+
+        async function performSearch() {
+            const keyword = document.getElementById('searchKeyword').value;
+            const location = document.getElementById('searchLocation').value;
+            const category = document.getElementById('searchCategory').value;
+            
+            showLoading();
+            
+            const filters = {};
+            if (keyword) filters.keyword = keyword;
+            if (location) filters.location = location;
+            if (category) filters.category = category;
+            
+            try {
+                await loadJobs(filters);
+                hideLoading();
+                showToast('Search completed!', 'success');
+                document.getElementById('jobs').scrollIntoView({behavior: 'smooth'});
+            } catch (error) {
+                hideLoading();
+                showToast('Search failed', 'error');
+            }
+        }
+
+        // Modal Functions
+        function showLoginModal() {
+            document.getElementById('loginModal').classList.add('active');
+        }
+
+        function showRegisterModal() {
+            document.getElementById('registerModal').classList.add('active');
+        }
+
+        function showActionModal() {
+            if (!currentUser) {
+                showToast('Please login first', 'error');
+                showLoginModal();
+                return;
+            }
+            
+            if (currentUser.user_type === 'employer') {
+                document.getElementById('postJobModal').classList.add('active');
+            } else {
+                document.getElementById('createProfileModal').classList.add('active');
+            }
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // UI Helper Functions
+        function showLoading() {
+            document.getElementById('loading').classList.add('active');
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').classList.remove('active');
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            const toastIcon = toast.querySelector('.toast-icon');
+            
+            toast.className = 'toast ' + type;
+            toastMessage.textContent = message;
+            toastIcon.textContent = type === 'success' ? '✔' : '✕';
+            
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html><span class="detail-label">Company:</span>
+                            <span class="detail-value">${job.company}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Category:</span>
+                            <span class="detail-value">${job.category}</span>
+                        </div>
+                        <div class="detail-row">
+                            
